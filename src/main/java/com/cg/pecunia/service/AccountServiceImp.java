@@ -96,7 +96,7 @@ public class AccountServiceImp implements AccountService{
 	@Override
 	public boolean validateDate(String accountDate) throws AccountException {
 		
-		return accountDate.matches("^(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))$");
+		return accountDate.matches("([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$");
 	}
 	@Override
 	public boolean validatePin(String pin) throws AccountException {

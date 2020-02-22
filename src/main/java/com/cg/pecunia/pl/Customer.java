@@ -12,7 +12,7 @@ import com.cg.pecunia.service.AccountServiceImp;
 public class Customer {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Scanner sc = new Scanner(System.in);
 		AccountService accountService = new AccountServiceImp();
 		Account account =null;
@@ -34,15 +34,16 @@ public class Customer {
 				
 				
 				System.out.println("First name ");
-				String name = sc.next();
-				
-				account.setAccountName(name);
+				String fName = sc.next();
+				if (!accountService.validateName(fName))
+					throw new AccountException("Customer name. only alphabets ");			
+				account.setAccountName(fName);
 				System.out.println("Last name ");
-				String namee = sc.next();
-				if (!accountService.validateName(name))
+				String lname = sc.next();
+				if (!accountService.validateName(lname))
 					throw new AccountException("Customer name. only alphabets ");
 
-				account.setAccountName(name);
+				account.setAccountName2(lname);
 				
 				
 			
@@ -137,6 +138,10 @@ public class Customer {
 			case 2:
 				try {
 					list = accountService.listAccounts();
+					if(list.isEmpty())
+					{
+						throw new AccountException("empty list");
+					}
 					for(Account a: list)
 						System.out.println(a);
 					

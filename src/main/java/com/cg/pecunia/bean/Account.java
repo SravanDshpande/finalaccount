@@ -3,6 +3,7 @@ package com.cg.pecunia.bean;
 public class Account {
 	String accountNumber;
 	String accountName;
+	String accountName2;
 	double accountBalance;
 	String accountAadhar;
 	String accountPan;
@@ -67,14 +68,19 @@ public class Account {
 	public void setAccountContact(String accountContact) {
 		this.accountContact = accountContact;
 	}
+	public String getAccountName2() {
+		return accountName2;
+	}
+	public void setAccountName2(String accountName2) {
+		this.accountName2 = accountName2;
+	}
 	@Override
 	public String toString() {
-		return "Account [accountNumber=" + accountNumber + ", accountName=" + accountName + ", accountBalance="
-				+ accountBalance + ", accountAadhar=" + accountAadhar + ", accountPan=" + accountPan + ", accountDob="
-				+ accountDob + ", accountAddress=" + accountAddress + ", accountGender=" + accountGender
-				+ ", accountContact=" + accountContact + "]";
+		return "Account [accountNumber=" + accountNumber + ", firstName=" + accountName + ", lastName="
+				+ accountName2 + ", accountBalance=" + accountBalance + ", accountAadhar=" + accountAadhar
+				+ ", accountPan=" + accountPan + ", accountDob=" + accountDob + ", accountAddress=" + accountAddress
+				+ ", accountGender=" + accountGender + ", accountContact=" + accountContact + "]";
 	}
-	
 	
 	
 	
