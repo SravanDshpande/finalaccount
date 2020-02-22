@@ -19,11 +19,11 @@ public class Customer {
 		Address address = null;
 		List<Account> list = null;
 		while(true) {
-			System.out.println("1. add");
-			System.out.println("2. list");
+			System.out.println("1. Add Account");
+			System.out.println("2. List Accounts");
 			
-			System.out.println("3. update");
-			System.out.println("4. exit");
+			System.out.println("3. Update Account");
+			System.out.println("4. Exit");
 			System.out.println("enter choice");
 			int ch = sc.nextInt();
 			switch(ch) {
@@ -33,29 +33,29 @@ public class Customer {
 				address = new Address();
 				
 				
-				System.out.println("First name (only alphabets )");
+				System.out.println("First name ");
 				String name = sc.next();
 				account.setAccountName(name);
-				System.out.println("Last name (only alphabets )");
+				System.out.println("Last name ");
 				String name2 = sc.next();
 				account.setAccountName(name);
 				
-				System.out.println("enter aadhar(12 digit num)");
-				String aadhar = sc.next();
+				System.out.println("Enter Aadhar number (12 digit num)");
+				String aadhar = sc.next();   
 				account.setAccountAadhar(aadhar);
 				
 				
-				System.out.println("enter pan(5 alphabets 4 numbers and 1 alphabet)");
+				System.out.println("Enter Pan number (5 alphabets 4 numbers and 1 alphabet)");
 				String pan = sc.next();
 				account.setAccountPan(pan);
 				
 				
 				
-				System.out.println("enter dob(dd/mm/yyyy)");
+				System.out.println("Enter dob (dd/mm/yyyy)");
 				String dob = sc.next();
 				account.setAccountDob(dob);
 				
-				System.out.println("enter address house number(ex:5-8-124/...)");
+				System.out.println("Enter Address HNo. (ex:5-8-124/...)");
 				String hno = sc.next();
 				address.setHouseNo(hno);
 				
@@ -67,20 +67,20 @@ public class Customer {
 				String city = sc.next();
 				address.setCity(city);
 				
-				System.out.println("state:(ex Telangana)");
+				System.out.println("state: (ex Telangana)");
 				String state = sc.next();
 				address.setState(state);
 				
-				System.out.println("pincode:  (6 digit num)");
+				System.out.println("pincode: (6 digit num)");
 				String pin = sc.next();
 				address.setPincode(pin);
 				account.setAccountAddress(address);
 				
-				System.out.println("enter gender   (male/female)");
+				System.out.println("Enter Gender (male/female)");
 				String gender = sc.next();
 				account.setAccountGender(gender);
 				
-				System.out.println("enter contact number (10 digit number)");
+				System.out.println("Enter Contact number (10 digit number)");
 				String contact = sc.next();
 				account.setAccountContact(contact);
 				System.out.println("correct details(Y/N)?");

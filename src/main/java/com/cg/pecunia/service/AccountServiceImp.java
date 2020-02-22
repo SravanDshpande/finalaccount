@@ -19,21 +19,27 @@ public class AccountServiceImp implements AccountService{
 	public String addAccount(Account account) throws AccountException {
 		
 		
+		if (!validateAadhar(account.getAccountAadhar()))
+			throw new AccountException("Customer Aadhar: Only 12-digit numbers allowed. ");
+		
+		
 		if (!validatePan(account.getAccountPan()))
 			throw new AccountException("Customer PAN: First 5 characters should be alphabets, next 4 should be digits and the last character should be an alphabet.");
 		
-		if (!validateContact(account.getAccountContact()))
-			throw new AccountException("Customer number: Only numbers allowed. ");
 		
-		if (!validateAadhar(account.getAccountAadhar()))
-			throw new AccountException("Customer Aadhar: Only 12-digit numbers allowed. ");
+		if(!validatePin(account.getAccountAddress().getPincode()))
+			throw new AccountException(" pin code should be 6 digits");
 		
 		if (!validateGender(account.getAccountGender()))
 			throw new AccountException("Customer Gender: Male/Female fields are accepted. ");
 	
+		if (!validateContact(account.getAccountContact()))
+			throw new AccountException("Customer number: Only numbers allowed. ");
 		
-		if(!validatePin(account.getAccountAddress().getPincode()))
-			throw new AccountException(" pin code should be 6 digits");
+		
+		
+		
+		
 	
 		Random random = new Random();
 		long id = random.nextInt((int) 10000000000l)+100000000000l;
