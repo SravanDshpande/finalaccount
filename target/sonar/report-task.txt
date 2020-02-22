@@ -1,0 +1,6 @@
+projectKey=pecunia:account
+serverUrl=http://localhost:9000
+serverVersion=6.5.0.27846
+dashboardUrl=http://localhost:9000/dashboard/index/pecunia:account
+ceTaskId=AXBrRjiw2aPxEhM31PNG
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXBrRjiw2aPxEhM31PNG
