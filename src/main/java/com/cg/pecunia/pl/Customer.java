@@ -31,10 +31,12 @@ public class Customer {
 				try {
 				account = new Account();
 				address = new Address();
-				System.out.println("first name (only alphabets )");
+				
+				
+				System.out.println("First name (only alphabets )");
 				String name = sc.next();
 				account.setAccountName(name);
-				System.out.println("second name (only alphabets )");
+				System.out.println("Last name (only alphabets )");
 				String name2 = sc.next();
 				account.setAccountName(name);
 				
@@ -42,9 +44,12 @@ public class Customer {
 				String aadhar = sc.next();
 				account.setAccountAadhar(aadhar);
 				
+				
 				System.out.println("enter pan(5 alphabets 4 numbers and 1 alphabet)");
 				String pan = sc.next();
 				account.setAccountPan(pan);
+				
+				
 				
 				System.out.println("enter dob(dd/mm/yyyy)");
 				String dob = sc.next();
