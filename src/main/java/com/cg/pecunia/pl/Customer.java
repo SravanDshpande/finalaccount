@@ -35,28 +35,53 @@ public class Customer {
 				
 				System.out.println("First name ");
 				String name = sc.next();
+				
 				account.setAccountName(name);
 				System.out.println("Last name ");
-				String name2 = sc.next();
+				String namee = sc.next();
+				if (!accountService.validateName(name))
+					throw new AccountException("Customer name. only alphabets ");
+
 				account.setAccountName(name);
 				
-				System.out.println("Enter Aadhar number (12 digit num)");
-				String aadhar = sc.next();   
+				
+			
+				System.out.println("Enter Aadhar number ");
+				String aadhar = sc.next();  
+				if (!accountService.validateAadhar(aadhar))
+					throw new AccountException("Customer Aadhar: Only 12-digit numbers allowed. ");
+				
+				
 				account.setAccountAadhar(aadhar);
+			
 				
 				
-				System.out.println("Enter Pan number (5 alphabets 4 numbers and 1 alphabet)");
+				
+				System.out.println("Enter Pan number ");
 				String pan = sc.next();
+				if (!accountService.validatePan(pan))
+					throw new AccountException("Customer pan: (5 alphabets 4 numbers and 1 alphabet ");
+				
 				account.setAccountPan(pan);
 				
 				
 				
-				System.out.println("Enter dob (dd/mm/yyyy)");
+				
+				
+					
+				
+				System.out.println("Enter dob ");
 				String dob = sc.next();
+				if (!accountService.validateDate(dob))
+					throw new AccountException("Customer dob:(dd/mm/yyyy) ");
 				account.setAccountDob(dob);
+				
+				
+				
 				
 				System.out.println("Enter Address HNo. (ex:5-8-124/...)");
 				String hno = sc.next();
+				
 				address.setHouseNo(hno);
 				
 				System.out.println("street:  ");
@@ -76,13 +101,23 @@ public class Customer {
 				address.setPincode(pin);
 				account.setAccountAddress(address);
 				
-				System.out.println("Enter Gender (male/female)");
+				
+			
+				System.out.println("Enter Gender ");
 				String gender = sc.next();
+				if (!accountService.validateGender(gender))
+					throw new AccountException("Customer grnder:(male/female) ");
 				account.setAccountGender(gender);
 				
-				System.out.println("Enter Contact number (10 digit number)");
+				
+				
+				System.out.println("Enter Contact number ");
 				String contact = sc.next();
+				if (!accountService.validateContact(contact))
+					throw new AccountException("Customer contact (10 digit number)");
 				account.setAccountContact(contact);
+				
+				
 				System.out.println("correct details(Y/N)?");
 				char correct=sc.next().charAt(0);
 				if(correct=='Y' ||correct=='y' ) {

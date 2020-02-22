@@ -19,7 +19,7 @@ public class AccountDaoImp implements AccountDao {
 	
 	@Override
 	public String addAccount(Account account) throws AccountException {
-		// TODO Auto-generated method stub
+		
 		if(map.containsKey(account.getAccountNumber()))
 				throw new AccountException("account exsist");
 		else
@@ -29,7 +29,7 @@ public class AccountDaoImp implements AccountDao {
 
 	@Override
 	public List<Account> listAccounts() throws AccountException {
-		// TODO Auto-generated method stub
+		
 		Collection<Account> collection = map.values();
 		List<Account> list = new ArrayList<>();
 		for(Account a : collection)
@@ -41,7 +41,7 @@ public class AccountDaoImp implements AccountDao {
 
 	@Override
 	public String updateAccount(String accountNumber, Account account) throws AccountException {
-		// TODO Auto-generated method stub
+	
 		if(map.containsKey(account.getAccountNumber()) && account.getAccountNumber().equals(accountNumber))
 			map.put(account.getAccountNumber(), account);
 			
@@ -54,7 +54,7 @@ public class AccountDaoImp implements AccountDao {
 
 	@Override
 	public Account findAccount(String accountNumber) throws AccountException {
-		// TODO Auto-generated method stub
+		
 		Account a = null;
 		if(map.containsKey(accountNumber))
 			a = map.get(accountNumber);

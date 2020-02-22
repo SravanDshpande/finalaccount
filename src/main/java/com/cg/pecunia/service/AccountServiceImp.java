@@ -12,12 +12,13 @@ public class AccountServiceImp implements AccountService{
 
 	AccountDao accountDao;
 	public AccountServiceImp() {
-		// TODO Auto-generated constructor stub
+		
 		accountDao = new AccountDaoImp() ;
 	}
 	@Override
 	public String addAccount(Account account) throws AccountException {
-		
+		if (!validateName(account.getAccountName()))
+			throw new AccountException("Customer name. only alphabets ");
 		
 		if (!validateAadhar(account.getAccountAadhar()))
 			throw new AccountException("Customer Aadhar: Only 12-digit numbers allowed. ");
@@ -49,57 +50,57 @@ public class AccountServiceImp implements AccountService{
 	}
 	@Override
 	public List<Account> listAccounts() throws AccountException {
-		// TODO Auto-generated method stub
+		
 		return accountDao.listAccounts();
 	}
 
 	
 	@Override
 	public String updateAccount(String accountNumber, Account account) throws AccountException {
-		// TODO Auto-generated method stub
+		
 		return accountDao.updateAccount(accountNumber, account);
 	}
 	@Override
 	public Account findAccount(String accountNumber) throws AccountException {
-		// TODO Auto-generated method stub
+		
 		return accountDao.findAccount(accountNumber);
 	}
 	@Override
 	public boolean validateName(String accountName) throws AccountException {
-		// TODO Auto-generated method stub
+		
 		return accountName.matches("[A-Za-z]+");
 	}
 	@Override
 	public boolean validatePan(String accountPan) throws AccountException {
-		// TODO Auto-generated method stub
+		
 		return accountPan.matches("[A-Z]{5}[0-9]{4}[A-Z]{1}");
 	}
 	@Override
 	public boolean validateContact(String accountContact) throws AccountException {
-		// TODO Auto-generated method stub
+		
 		return accountContact.matches("[0-9]{10}");
 	}
 	@Override
 	public boolean validateAadhar(String accountAadhar) throws AccountException {
-		// TODO Auto-generated method stub
+		
 		return accountAadhar.matches("[0-9]{12}");
 
 	}
 	@Override
 	public boolean validateGender(String accountGender) throws AccountException {
-		// TODO Auto-generated method stub
+		
 		if((accountGender.equals("male")) || (accountGender.equals("female")))
 			return true;
 		return false;
 	}
 	@Override
 	public boolean validateDate(String accountDate) throws AccountException {
-		// TODO Auto-generated method stub
+		
 		return accountDate.matches("^(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))$");
 	}
 	@Override
 	public boolean validatePin(String pin) throws AccountException {
-		// TODO Auto-generated method stub
+		
 		return pin.matches("[0-9]{6}");
 	}
 
