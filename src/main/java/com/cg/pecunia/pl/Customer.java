@@ -31,56 +31,65 @@ public class Customer {
 				try {
 				account = new Account();
 				address = new Address();
-				System.out.println("enter name");
+				System.out.println("first name (only alphabets )");
 				String name = sc.next();
 				account.setAccountName(name);
+				System.out.println("second name (only alphabets )");
+				String name2 = sc.next();
+				account.setAccountName(name);
 				
-				System.out.println("enter aadhar");
+				System.out.println("enter aadhar(12 digit num)");
 				String aadhar = sc.next();
 				account.setAccountAadhar(aadhar);
 				
-				System.out.println("enter pan");
+				System.out.println("enter pan(5 alphabets 4 numbers and 1 alphabet)");
 				String pan = sc.next();
 				account.setAccountPan(pan);
 				
-				System.out.println("enter dob");
+				System.out.println("enter dob(dd/mm/yyyy)");
 				String dob = sc.next();
 				account.setAccountDob(dob);
 				
-				System.out.println("enter address");
-				
-				System.out.println("house number:");
+				System.out.println("enter address house number(ex:5-8-124/...)");
 				String hno = sc.next();
 				address.setHouseNo(hno);
 				
-				System.out.println("street:");
+				System.out.println("street:  ");
 				String street = sc.next();
 				address.setStreet(street);
 				
-				System.out.println("city:");
+				System.out.println("city: (ex:Hyderabad)");
 				String city = sc.next();
 				address.setCity(city);
 				
-				System.out.println("state:");
+				System.out.println("state:(ex Telangana)");
 				String state = sc.next();
 				address.setState(state);
 				
-				System.out.println("pincode:");
+				System.out.println("pincode:  (6 digit num)");
 				String pin = sc.next();
 				address.setPincode(pin);
 				account.setAccountAddress(address);
 				
-				System.out.println("enter gender");
+				System.out.println("enter gender   (male/female)");
 				String gender = sc.next();
 				account.setAccountGender(gender);
 				
-				System.out.println("enter contact number");
+				System.out.println("enter contact number (10 digit number)");
 				String contact = sc.next();
 				account.setAccountContact(contact);
+				System.out.println("correct details(Y/N)?");
+				char correct=sc.next().charAt(0);
+				if(correct=='Y' ||correct=='y' ) {
+					
+				
 				
 				String accountNumber = accountService.addAccount(account);
 				System.out.println("Account created (Account Number : "+accountNumber+")");
 				}
+				else
+					break;
+			}
 				catch(AccountException e) {
 					System.out.println(e.getMessage());
 				}break;
