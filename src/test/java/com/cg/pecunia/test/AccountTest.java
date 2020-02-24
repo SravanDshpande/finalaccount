@@ -31,14 +31,14 @@ AccountDao dao=null;
 	@Test
 	void test() throws AccountException
 	{
-		Account acc=new Account();
-		dao.addAccount(acc);
-		acc.setAccountName("sravan");
-		acc.setAccountAadhar("123456799456");
-		acc.setAccountPan("WERTY1234L");
-		acc.setAccountDob("22-02-1998");
-		acc.setAccountContact("1234567894");
-		acc.setAccountGender("male");
+		Account customeraccount=new Account();
+		dao.addAccount(customeraccount);
+		customeraccount.setAccountName("sravan");
+		customeraccount.setAccountAadhar("123456799456");
+		customeraccount.setAccountPan("WERTY1234L");
+		customeraccount.setAccountDob("22-02-1998");
+		customeraccount.setAccountContact("1234567894");
+		customeraccount.setAccountGender("male");
       		List<Account> l=dao.listAccounts();
       		assertEquals(1,l.size());
 	}
