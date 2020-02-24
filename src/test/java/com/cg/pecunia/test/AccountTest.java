@@ -16,6 +16,7 @@ import com.cg.pecunia.service.AccountServiceImp;
 
 class AccountTest {
 AccountDao dao=null;
+AccountService service=null;
 
 
 
@@ -24,7 +25,7 @@ AccountDao dao=null;
 	public void setup()
 	{
 		dao=new AccountDaoImp();
-	
+	service=new AccountServiceImp();
 	}
 	
 	
@@ -41,6 +42,25 @@ AccountDao dao=null;
 		customeraccount.setAccountGender("male");
       		List<Account> l=dao.listAccounts();
       		assertEquals(1,l.size());
+	}
+        @Test
+	void testValidatePan()throws AccountException
+	{
+		boolean status1=service.validatePan("ASDFG1344G");
+		boolean status2=service.validatePan("asdfgh124l");
+		assertEquals(true, status1);
+		assertEquals(false, status2);
+		
+	}
+	
+	@Test
+	void testValidateAadhar()throws AccountException
+	{
+		boolean status1=service.validateAadhar("123456789456");
+		boolean status2=service.validateAadhar("12345678945");
+		assertEquals(true, status1);
+		assertEquals(false, status2);
+		
 	}
 
 }
