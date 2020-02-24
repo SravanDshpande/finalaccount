@@ -10,36 +10,38 @@ import com.cg.pecunia.service.AccountService;
 import com.cg.pecunia.service.AccountServiceImp;
 
 public class Customer {
-
+          /*    account   */
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		AccountService accountService = new AccountServiceImp();
-		Account account =null;
+		Account account = new Account();
 		Address address = null;
 		List<Account> list = null;
+		System.out.println("   WELOCME TO PECUNIA BANK   ");
 		while(true) {
-			System.out.println("1. Add Account");
-			System.out.println("2. List Accounts");
 			
-			System.out.println("3. Update Account");
+			System.out.println("1. Add Account");
+			System.out.println("2. Update Account");
+			System.out.println("3. List Accounts");
 			System.out.println("4. Exit");
-			System.out.println("enter choice");
-			int ch = sc.nextInt();
-			switch(ch) {
+			System.out.println("Enter your choice");
+			int ch = scanner.nextInt();
+			switch(ch) { 
 			case 1:
 				try {
-				account = new Account();
+				
 				address = new Address();
 				
 				
 				System.out.println("First name ");
-				String fName = sc.next();
-				if (!accountService.validateName(fName))
-					throw new AccountException("Customer name. only alphabets ");			
+				String fName = scanner.next();
+				if (!accountService.validateName(fName)) 
+					throw new AccountException("Customer name. only alphabets ");	
+				
 				account.setAccountName(fName);
 				System.out.println("Last name ");
-				String lname = sc.next();
+				String lname = scanner.next();
 				if (!accountService.validateName(lname))
 					throw new AccountException("Customer name. only alphabets ");
 
@@ -48,7 +50,7 @@ public class Customer {
 				
 			
 				System.out.println("Enter Aadhar number ");
-				String aadhar = sc.next();  
+				String aadhar = scanner.next();  
 				if (!accountService.validateAadhar(aadhar))
 					throw new AccountException("Customer Aadhar: Only 12-digit numbers allowed. ");
 				
@@ -59,9 +61,9 @@ public class Customer {
 				
 				
 				System.out.println("Enter Pan number ");
-				String pan = sc.next();
+				String pan = scanner.next();
 				if (!accountService.validatePan(pan))
-					throw new AccountException("Customer pan: (5 alphabets 4 numbers and 1 alphabet ");
+					throw new AccountException("Customer pan: (5 alphabets 4 numbers and 1 alphabet) ");
 				
 				account.setAccountPan(pan);
 				
@@ -72,7 +74,7 @@ public class Customer {
 					
 				
 				System.out.println("Enter dob ");
-				String dob = sc.next();
+				String dob = scanner.next();
 				if (!accountService.validateDate(dob))
 					throw new AccountException("Customer dob:(dd/mm/yyyy) ");
 				account.setAccountDob(dob);
@@ -81,31 +83,31 @@ public class Customer {
 				
 				
 				System.out.println("Enter Address HNo. (ex:5-8-124/...)");
-				String hno = sc.next();
+				String hno = scanner.next();
 				
 				address.setHouseNo(hno);
 				
 				System.out.println("street:  ");
-				String street = sc.next();
+				String street = scanner.next();
 				address.setStreet(street);
 				
 				System.out.println("city: (ex:Hyderabad)");
-				String city = sc.next();
+				String city = scanner.next();
 				address.setCity(city);
 				
 				System.out.println("state: (ex Telangana)");
-				String state = sc.next();
+				String state = scanner.next();
 				address.setState(state);
 				
 				System.out.println("pincode: (6 digit num)");
-				String pin = sc.next();
+				String pin = scanner.next();
 				address.setPincode(pin);
 				account.setAccountAddress(address);
 				
 				
 			
 				System.out.println("Enter Gender ");
-				String gender = sc.next();
+				String gender = scanner.next();
 				if (!accountService.validateGender(gender))
 					throw new AccountException("Customer grnder:(male/female) ");
 				account.setAccountGender(gender);
@@ -113,14 +115,14 @@ public class Customer {
 				
 				
 				System.out.println("Enter Contact number ");
-				String contact = sc.next();
+				String contact = scanner.next();
 				if (!accountService.validateContact(contact))
 					throw new AccountException("Customer contact (10 digit number)");
 				account.setAccountContact(contact);
 				
 				
 				System.out.println("correct details(Y/N)?");
-				char correct=sc.next().charAt(0);
+				char correct=scanner.next().charAt(0);
 				if(correct=='Y' ||correct=='y' ) {
 					
 				
@@ -132,48 +134,40 @@ public class Customer {
 					break;
 			}
 				catch(AccountException e) {
-					System.out.println(e.getMessage());
-				}break;
-			
-			case 2:
-				try {
-					list = accountService.listAccounts();
-					if(list.isEmpty())
-					{
-						throw new AccountException("empty list");
-					}
-					for(Account a: list)
-						System.out.println(a);
-					
-				}
-				catch(AccountException e) {
-					System.out.println(e.getMessage());
+					System.err.println(e.getMessage());
 				}break;
 			
 				
-		
-			case 3:
+			case 2:
+				if(account.getAccountNumber()!=null) {
 				try {
 					address = new Address();
 					System.out.println("update account details");
 					System.out.println("enter account number");
-					String acc = sc.next();
+					String acc = scanner.next();
+					if (!accountService.validateAccountNumber(acc))
+						throw new AccountException("Account number should be of 12 digits");			
+					
 					account = accountService.findAccount(acc);
 					System.out.println("update contact");
-					String contact = sc.next();
+					String contact = scanner.next();
+					if (!accountService.validateContact(contact))
+						throw new AccountException("Customer contact (10 digit number)");
+					
 					account.setAccountContact(contact);
 					System.out.println("update address");
 					System.out.println("update house no:");
-					String hno = sc.next();
+					String hno = scanner.next();
+					
 					address.setCity(hno);
 					System.out.println("update city");
-					String city = sc.next();
+					String city = scanner.next();
 					address.setCity(city);
 					System.out.println("update state");
-					String state = sc.next();
+					String state = scanner.next();
 					address.setState(state);
-					System.out.println("update pin");
-					String pin = sc.next();
+					System.out.println("update pin code");
+					String pin = scanner.next();
 					address.setPincode(pin);
 					account.setAccountAddress(address);
 					
@@ -185,13 +179,43 @@ public class Customer {
 					
 				}
 				catch(AccountException e) {
-					System.out.println(e.getMessage());
+					System.err.println(e.getMessage());
+				}
+				
+				}
+				
+				else {
+					System.err.println("Add Account and then update");
+				}
+				
+				
+				break;
+				
+				
+				
+			case 3:
+				try {
+					list = accountService.listAccounts();
+					if(list.isEmpty())
+					{
+						throw new AccountException("empty list");
+					}
+					for(Account a: list)
+						System.out.println(a);
+					
+				}
+				catch(AccountException e) {
+					System.err.println(e.getMessage());
 				}break;
+			
+				
+		
+		
 				
 			case 4:
 				System.out.println("thankyou");
 				return;
-			default : System.out.println("enter valid options");
+			default : System.err.println("enter valid options");
 				break;
 			}
 		}
